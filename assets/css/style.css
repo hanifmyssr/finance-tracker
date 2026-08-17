@@ -1,20 +1,98 @@
+:root {
+    --bg-body: #f4f6f9;
+    --bg-card: #ffffff;
+    --text-main: #212529;
+    --text-muted: #6c757d;
+    --navbar-bg: #212529;
+    --table-header-bg: #212529;
+    --border-color: #dee2e6;
+}
+
+[data-theme="dark"] {
+    --bg-body: #121417;
+    --bg-card: #1e2126;
+    --text-main: #e8e9ea;
+    --text-muted: #a0a4a8;
+    --navbar-bg: #0d0f11;
+    --table-header-bg: #0d0f11;
+    --border-color: #33373d;
+}
+
 body {
-    background-color: #f4f6f9;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .card {
+    background-color: var(--bg-card);
+    color: var(--text-main);
     border: none;
     border-radius: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar {
+    background-color: var(--navbar-bg) !important;
 }
 
 .navbar-brand {
     font-weight: 600;
 }
 
+.table {
+    color: var(--text-main);
+}
+
 .table thead {
     font-size: 0.9rem;
 }
 
+.table-responsive .table {
+    background-color: var(--bg-card);
+}
+
+[data-theme="dark"] .table-dark {
+    --bs-table-bg: var(--table-header-bg);
+}
+
+[data-theme="dark"] .table > :not(caption) > * > * {
+    border-color: var(--border-color);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+    background-color: #2a2d33;
+    color: var(--text-main);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    background-color: #2a2d33;
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .text-muted {
+    color: var(--text-muted) !important;
+}
+
 .badge {
     font-weight: 500;
+}
+
+.theme-toggle-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+    background-color: rgba(255,255,255,0.1);
 }
