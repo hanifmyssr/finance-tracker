@@ -100,6 +100,10 @@ const months = <?php echo json_encode($months); ?>;
 const monthlyIncome = <?php echo json_encode($monthlyIncome); ?>;
 const monthlyExpense = <?php echo json_encode($monthlyExpense); ?>;
 
+const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+const chartTextColor = isDark ? '#e8e9ea' : '#212529';
+const chartGridColor = isDark ? '#33373d' : '#e9ecef';
+
 new Chart(document.getElementById('categoryChart'), {
     type: 'pie',
     data: {
@@ -109,7 +113,10 @@ new Chart(document.getElementById('categoryChart'), {
             backgroundColor: ['#f94144','#f3722c','#f8961e','#f9c74f','#90be6d','#43aa8b','#577590','#277da1','#9b5de5','#adb5bd']
         }]
     },
-    options: { responsive: true }
+    options: {
+        responsive: true,
+        plugins: { legend: { labels: { color: chartTextColor } } }
+    }
 });
 
 new Chart(document.getElementById('trendChart'), {
@@ -121,7 +128,14 @@ new Chart(document.getElementById('trendChart'), {
             { label: 'Pengeluaran', data: monthlyExpense, borderColor: '#f94144', backgroundColor: '#f9414433', tension: 0.3, fill: true }
         ]
     },
-    options: { responsive: true }
+    options: {
+        responsive: true,
+        plugins: { legend: { labels: { color: chartTextColor } } },
+        scales: {
+            x: { ticks: { color: chartTextColor }, grid: { color: chartGridColor } },
+            y: { ticks: { color: chartTextColor }, grid: { color: chartGridColor } }
+        }
+    }
 });
 </script>
 
